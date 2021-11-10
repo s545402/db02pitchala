@@ -10,7 +10,7 @@ var safariRouter = require('./routes/safari');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 var Safari = require("./models/safari");
-
+var resourceRouter = require('./routes/resource')
 var app = express();
 
 // view engine setup
@@ -28,6 +28,7 @@ app.use('/users', usersRouter);
 app.use('/safari', safariRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
+app.use('/resource', resourceRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
