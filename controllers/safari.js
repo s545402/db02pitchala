@@ -1,11 +1,20 @@
+const safaris = require('../models/safari')
 var Safari = require('../models/safari');
 //module.exports = mongoose.model("Safari", safariSchema)
 
 
 // List of all Safari
-exports.safari_list = function(req, res) {
-res.send('NOT IMPLEMENTED: Safari list');
-};
+
+exports.safari_list = async function(req, res) { 
+    try{ 
+        theSafari = await Safari.find(); 
+        res.send(theSafari); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
 // for a specific Safari.
 exports.safari_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Safari detail: ' + req.params.id);
