@@ -19,10 +19,38 @@ exports.safari_list = async function(req, res) {
 exports.safari_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Safari detail: ' + req.params.id);
 };
-// Handle Costume create on POST.
-exports.safari_create_post = function(req, res) {
-res.send('NOT IMPLEMENTED: Safari create POST');
-};
+
+exports.safari_view_all_Page = async function(req, res) { 
+    try{ 
+        theSafaris = await Safari.find(); 
+        res.render('safari', { title: 'Safari Search Results', results: theSafaris }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
+
+exports.safari_create_post = async function(req, res) { 
+    console.log(req.body) 
+    let document = new Safari(); 
+    // We are looking for a body, since POST does not have query parameters. 
+    // Even though bodies can be in many different formats, we will be picky 
+    // and require that it be a json object 
+    // {"costume_type":"goat", "cost":12, "size":"large"} 
+    document.user = req.body.user; 
+    document.varient = req.body.varient; 
+    document.cost = req.body.cost; 
+    try{ 
+        let result = await document.save(); 
+        res.send(result); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
+
 // Handle Costume delete form on DELETE.
 exports.safari_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Safari delete DELETE ' + req.params.id);
