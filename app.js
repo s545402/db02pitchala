@@ -9,6 +9,8 @@ var usersRouter = require('./routes/users');
 var safariRouter = require('./routes/safari');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
+var Safari = require("./models/safari");
+
 var app = express();
 
 // view engine setup
@@ -41,5 +43,38 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+const connectionString = process.env.MONGO_CON
+
+
+
+mongoose = require('mongoose');
+mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true});
+
+
+
+async function recreateDB(){
+// Delete everything
+await Safari.deleteMany();
+
+
+var results = [{"varient":"XM","user":"swathi","cost":5000},
+               {"varient":"XT","user":"madhu","cost":9000},
+               {"varient":"XE","user":"khyathi","cost":6000}]
+
+for(i in results){
+let instance = new Safari({varient: results[i]["varient"], user: results[i]["user"], cost:results[i]["cost"]});
+instance.save( function(err,doc) {
+if(err) return console.error(err);
+console.log("object added.")
+});
+}
+
+}
+
+let reseed = true;
+if (reseed) { recreateDB();}
+
+
 
 module.exports = app;
