@@ -20,4 +20,6 @@ router.get('/safari/:id', safari_controller.safari_detail);
 router.get('/safari', safari_controller.safari_list);
 /* GET detail safari page */
 
+router.get('/detail', safari_controller.safari_view_one_Page); 
+
 module.exports = router;

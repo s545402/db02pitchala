@@ -1,7 +1,7 @@
 var express = require('express'); 
-const safari_controlers= require('../controllers/safari'); 
+const safari_controller= require('../controllers/safari'); 
 var router = express.Router(); 
  
 /* GET costumes */ 
-router.delete('/safari/:id', safari_controlers.safari_delete);
+router.get('/detail', safari_controller.safari_view_one_Page);
 module.exports = router; 
