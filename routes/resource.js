@@ -22,4 +22,6 @@ router.get('/safari', safari_controller.safari_list);
 
 router.get('/detail', safari_controller.safari_view_one_Page); 
 
+
+router.get('/create', safari_controller.safari_create_Page);
 module.exports = router;
