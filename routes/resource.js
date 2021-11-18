@@ -26,4 +26,6 @@ router.get('/detail', safari_controller.safari_view_one_Page);
 router.get('/create', safari_controller.safari_create_Page);
 
 router.get('/update', safari_controller.safari_update_Page);
+
+router.get('/delete', safari_controller.safari_delete_Page);
 module.exports = router;

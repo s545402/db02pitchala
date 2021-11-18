@@ -129,3 +129,16 @@ exports.safari_update_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
+   
+   exports.safari_delete_Page = async function(req, res) {
+       console.log("Delete view for id " + req.query.id)
+       try{
+       result = await safaris.findById(req.query.id)
+       res.render('safaridelete', { title: 'Safari Delete', toShow:
+      result });
+       }
+       catch(err){
+       res.status(500)
+       res.send(`{'error': '${err}'}`);
+       }
+      };
