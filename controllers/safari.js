@@ -116,3 +116,16 @@ exports.safari_create_Page = function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
+
+
+exports.safari_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await safaris.findById(req.query.id)
+    res.render('safariupdate', { title: 'Safari Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };

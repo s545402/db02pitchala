@@ -3,16 +3,25 @@ extends layout
 block content
   h1= title
 
-  form(id='SafariForm', action="/resource/safari", method="POST")
+  - let safariid = toShow._id
+  - let varient = toShow.varient
+  - let user = toShow.user
+  - let cost = toShow.cost
+
+  div.row(class='mb-2')
+  div.mr-1 ID is
+  div #{safariid}
+  - let actionid = "/resource/safari/" + safariid
+  form(id='SafariForm',  action= actionid, method="PUT")
     div.form-group
         label.safariAttr(for='varient') Safari Varient
-        input#name(type='text', name='varient')
+        input#name(type='text', Varient='type', value=varient)
     div.form-group
         label.safariAttr(for='user') Safari User
-        input#name(type='text', name='user')
+        input#name(type='text', user='name', value=name)
     div.form-group
         label.safariAttr(for='cost') Safari Cost
-        input#cost(type='number', name='cost')
+        input#cost(type='number', name='cost', value=cost)
     input.button(type="submit")
 
   script. 
