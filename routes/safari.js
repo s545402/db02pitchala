@@ -4,5 +4,6 @@ var router = express.Router();
  
 /* GET costumes */ 
 
-router.get('/detail', safari_controller.safari_view_one_Page);
+router.get('/', safari_controller.safari_view_all_Page);
+router.get('/update', safari_controller.safari_update_Page);
 module.exports = router; 

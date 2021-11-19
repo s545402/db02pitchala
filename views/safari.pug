@@ -4,16 +4,12 @@ block content
   h1= title
   - var results = results
   div(class="container-fuild")
-    div(class="row")
+    div(class="row m-1")
       each result,index in results
-        div(class = "col-sm-2" id=index onclick=`buy(${index})`) 
-          p #{result.user}
-          p #{result.varient}
-          p #{result.cost}
-
-  script.
-    function buy(element){
-      alert(`You purchased item ${element+1}.`)
+        - let destination = `dispatch(\"/plant/update?id=${result._id}\")`
+        div(class="col-sm-4")  #{result.varient} - #{result.user} - #{result.cost}
+          button.btn( class="btn-primary" class="btn-toolbar", onclick= destination) Update
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
     }
-
-  
