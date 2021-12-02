@@ -5,5 +5,4 @@ const safariSchema = mongoose.Schema({
  user: String, 
 }) 
  
-module.exports = mongoose.model("Safari", 
-safariSchema) 
+module.exports = mongoose.model("Safari", safariSchema) 

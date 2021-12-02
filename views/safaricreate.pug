@@ -12,7 +12,7 @@ block content
         input#name(type='text', name='user')
     div.form-group
         label.safariAttr(for='cost') Safari Cost
-        input#cost(type='number', name='cost')
+        input#cost(type='number', name='cost', min=500, max=9000)
     input.button(type="submit")
 
   script. 
@@ -25,7 +25,7 @@ block content
       }).then((resp) => { 
         return resp.text(); // or resp.text() or whatever the server sends 
       }).then((body) => { 
-        alert("Save succeded") 
+        alert("Safari cost Should be minimum of $500") 
         // TODO handle body 
       }).catch((error) => { 
         // TODO handle error 
