@@ -1,18 +1,12 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title} Assignment-10
-  button(type="button",onclick="update()",class="btn btn-secondary") Press Me
-  <br>
-  div(id="target") Display
-   a(Type="button", href="/safari") link to safari list
-
-  script.
-        let a=0;
-        function update()
-         {
-            a=a+1;
-            document.getElementById("target").innerHTML ="value now" + a;
-
-         };
+extends layout 
+ 
+block content 
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/rose") Take me to roses 
+    br 
+    a(href="/logout") Logout 
